@@ -60,9 +60,11 @@ public abstract class Vehicle
 	@Override
 	public String toString()
 	{
-		// TODO
-		
-		return "";
+		return "$" + this.price + " " + this.modelYear + " " + this.brand 
+				+ " " + this.make + " (" + this.color + "), " + this.mileage 
+				+ " Miles driven, " + this.mass + " Tons, " + this.cylinders
+				+ " cylinder " + this.fuelType + " engine with " 
+				+ this.gasTankCapacity + " Gallon tank and " + this.startType;
 	}
 
 	//Getters and setters 
