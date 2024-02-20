@@ -2,6 +2,9 @@ package edu.missouri.vehicleproject.vehicle;
 
 public abstract class Vehicle
 {
+	//Constant
+	protected static final long currentYear = 2024;
+	
 	// Protected fields
 	protected String brand;
 	protected String make;

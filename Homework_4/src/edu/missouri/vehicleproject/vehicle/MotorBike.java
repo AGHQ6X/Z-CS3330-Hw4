@@ -15,22 +15,20 @@ public class MotorBike extends Vehicle
 	@Override
 	public double calculateMaintenaceCost(double distance)
 	{
-		// TODO 
-		
-		return 0;
+		return distance * this.mass * (Vehicle.currentYear - this.modelYear) 
+				* this.cylinders * 0.0002;
 	}
 
 	@Override
 	public double calculateFuelEfficiency(double distance, double fuelPrice)
 	{
-		// TODO 
-		
-		return 0.0;
+		return this.cylinders * this.gasTankCapacity * fuelPrice / distance 
+				* 0.001;
 	}
 
 	@Override
 	public void startEngine()
 	{
-		// TODO
+		System.out.println("Vehicle is a " + StartMechanism.KICKSTART);
 	}
 }
