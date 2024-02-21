@@ -56,7 +56,7 @@ public abstract class Vehicle
 	public abstract double calculateFuelEfficiency(double distance, double fuelPrice); 
 	public abstract void startEngine(); 
 	
-	// Print functionality
+	// String conversions
 	@Override
 	public String toString()
 	{
@@ -65,6 +65,15 @@ public abstract class Vehicle
 				+ " Miles driven, " + this.mass + " Tons, " + this.cylinders
 				+ " cylinder " + this.fuelType + " engine with " 
 				+ this.gasTankCapacity + " Gallon tank and " + this.startType;
+	}
+	
+	public String toCSV()
+	{
+		return this.getClass().getSimpleName() + "," + this.brand + "," + 
+				this.make + "," + this.modelYear + "," + this.price + "," 
+				+ this.color + "," + this.fuelType + "," + this.mileage 
+				+ "," + this.mass + "," + this.cylinders + "," 
+				+ this.gasTankCapacity + "," + this.startType;
 	}
 
 	//Getters and setters 

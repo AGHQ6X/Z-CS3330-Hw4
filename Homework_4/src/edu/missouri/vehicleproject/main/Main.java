@@ -7,7 +7,6 @@ public class Main
 	public static void main(String[] args)
 	{
 		// Instantiate vehicleManager, perform operations based on the requirements.
-		@SuppressWarnings("unused")
 		VehicleManager vehicleManager = new VehicleManager();
 		
 		// Read vehicle data from the vehcileList.csv file and initialize objects.
@@ -21,5 +20,8 @@ public class Main
 		
 		// Display all motorbike information.
 		// TODO
+		
+		// Save list to check file read ability
+		vehicleManager.saveVehicleList();
 	}
 }

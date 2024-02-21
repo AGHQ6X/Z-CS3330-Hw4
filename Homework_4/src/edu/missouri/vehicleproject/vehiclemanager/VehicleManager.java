@@ -1,14 +1,18 @@
 package edu.missouri.vehicleproject.vehiclemanager;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import edu.missouri.vehicleproject.vehicle.Car;
 import edu.missouri.vehicleproject.vehicle.FuelType;
 import edu.missouri.vehicleproject.vehicle.MotorBike;
+import edu.missouri.vehicleproject.vehicle.SUV;
 import edu.missouri.vehicleproject.vehicle.StartMechanism;
+import edu.missouri.vehicleproject.vehicle.Truck;
 import edu.missouri.vehicleproject.vehicle.Vehicle;
 import edu.missouri.vehicleproject.vehicle.VehicleColor;
 
@@ -24,9 +28,6 @@ public class VehicleManager
 		// Initialize variables
 		this.fileName = "vehicleList.csv";
 		this.vehicles = new ArrayList<Vehicle>();
-		
-		// Read from file
-		readFromFile(this.fileName);
 	}
 	
 	public VehicleManager(String fileName)
@@ -98,11 +99,11 @@ public class VehicleManager
 					}
 					else if (values[0].equals("SUV"))
 					{
-						vehicles.add(new MotorBike(brand, make, modelYear, price, color, mileage, mass, cylinders, gasTankCapacity, fuelType, startType));
+						vehicles.add(new SUV(brand, make, modelYear, price, color, mileage, mass, cylinders, gasTankCapacity, fuelType, startType));
 					}
-					else if (values[0].equals("MotorBike"))
+					else if (values[0].equals("Truck"))
 					{
-						vehicles.add(new MotorBike(brand, make, modelYear, price, color, mileage, mass, cylinders, gasTankCapacity, fuelType, startType));
+						vehicles.add(new Truck(brand, make, modelYear, price, color, mileage, mass, cylinders, gasTankCapacity, fuelType, startType));
 					}
 				}
 				
@@ -128,8 +129,39 @@ public class VehicleManager
 	
 	public boolean saveVehicleList()
 	{
-		// TODO
+		// Create a writer object
+		BufferedWriter writer;
 		
+		// File opening
+		try
+		{
+			// Initialize writer
+			writer = new BufferedWriter(new FileWriter(this.fileName, false));
+			
+			// Write opening line
+			writer.write("Type,Model,Make,ModelYear,Price,Color,FuelType,Mileage,Mass,Cylinders,GasTankCapacity,StartType");
+			writer.newLine();
+			
+			// Loop through vehicles
+			for (Vehicle vehicle : this.vehicles)
+			{
+				writer.write(vehicle.toCSV());
+				writer.newLine();
+			}
+			
+			// Close writer 
+			writer.close();
+		}
+		catch (IOException e)
+		{
+			// Print error
+			System.out.println("File write error: " + e.toString());
+				
+			// File read failed
+			return false;
+		}
+		
+		// If it got here, the file read was successful
 		return true;
 	}
 	
