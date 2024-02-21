@@ -16,12 +16,18 @@ public class Main
 		vehicleManager.displayAllVehicleInformation();
 		
 		// Display all car information.
-		// TODO
+		vehicleManager.displayAllCarInformation();
 		
 		// Display all motorbike information.
-		// TODO
+		vehicleManager.displayAllMotorBikeInformation();
 		
-		// Save list to check file read ability
+		// Display all SUV information.
+		vehicleManager.displayAllSUVInformation();
+		
+		// Display all truck information.
+		vehicleManager.displayAllTruckInformation();
+		
+		// Save list to check file write ability
 		vehicleManager.saveVehicleList();
 	}
 }

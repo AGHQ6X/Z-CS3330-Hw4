@@ -145,6 +145,7 @@ public class VehicleManager
 			// Loop through vehicles
 			for (Vehicle vehicle : this.vehicles)
 			{
+				// Write line to CSV
 				writer.write(vehicle.toCSV());
 				writer.newLine();
 			}
@@ -168,42 +169,87 @@ public class VehicleManager
 	// List editor methods
 	public boolean addVehicle(Vehicle vehicle)
 	{
-		// TODO
-		
-		return true;
+		return this.vehicles.add(vehicle);
 	}
 	
 	public boolean removeVehicle(Vehicle vehicle)
 	{
-		// TODO
-		
-		return true;
+		return this.vehicles.remove(vehicle);
 	}
 	
 	// Display information methods
 	public void displayVehicleInformation(Vehicle v)
 	{
-		// TODO
+		// Print vehicle with an indent
+		System.out.println("    " + v.toString());
 	}
 	
 	public void displayAllCarInformation()
 	{
-		// TODO
+		// Print heading
+		System.out.println("Cars:");
+				
+		// Loop through all vehicles
+		for (Vehicle vehicle : vehicles)
+		{
+			// Check if vehicle is a Car
+			if (this.isVehicleType(vehicle, Car.class))
+			{
+				// If vehicle is a Car, print
+				this.displayVehicleInformation(vehicle);
+			}
+		}
 	}
 	
 	public void displayAllTruckInformation()
 	{
-		// TODO
+		// Print heading
+		System.out.println("Trucks:");
+						
+		// Loop through all vehicles
+		for (Vehicle vehicle : vehicles)
+		{
+			// Check if vehicle is a Truck
+			if (this.isVehicleType(vehicle, Truck.class))
+			{
+				// If vehicle is a Truck, print
+				this.displayVehicleInformation(vehicle);
+			}
+		}
 	}
 	
 	public void displayAllSUVInformation()
 	{
-		// TODO
+		// Print heading
+		System.out.println("SUVs:");
+
+		// Loop through all vehicles
+		for (Vehicle vehicle : vehicles)
+		{
+			// Check if vehicle is an SUV
+			if (this.isVehicleType(vehicle, SUV.class))
+			{
+				// If vehicle is a SUV, print
+				this.displayVehicleInformation(vehicle);
+			}
+		}
 	}
 	
 	public void displayAllMotorBikeInformation()
 	{
-		// TODO
+		// Print heading
+		System.out.println("MotorBikes:");
+
+		// Loop through all vehicles
+		for (Vehicle vehicle : vehicles)
+		{
+			// Check if vehicle is a MotorBike
+			if (this.isVehicleType(vehicle, MotorBike.class))
+			{
+				// If vehicle is a MotorBike, print
+				this.displayVehicleInformation(vehicle);
+			}
+		}
 	}
 	
 	public void displayAllVehicleInformation()
@@ -214,18 +260,15 @@ public class VehicleManager
 		// Loop through all vehicles
 		for (Vehicle vehicle : vehicles)
 		{
-			// Print vehicle with a small indent
-			System.out.println(" " + vehicle.toString());
+			// Print vehicle
+			this.displayVehicleInformation(vehicle);
 		}
 	}
 	
 	// Check vehicle methods
-	@SuppressWarnings("unused")
 	private boolean isVehicleType(Vehicle v, @SuppressWarnings("rawtypes") Class clazz)
 	{
-		// TODO
-		
-		return true;
+		return v.getClass() == clazz;
 	}
 	
 	public int getNumberOfVehichlesByType(@SuppressWarnings("rawtypes") Class clazz)
