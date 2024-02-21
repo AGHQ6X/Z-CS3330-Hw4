@@ -66,6 +66,10 @@ public class Main
 		System.out.println("Vehicles with lowest fuel efficiency:");
 		lowArr.forEach(v -> vehicleManager.displayVehicleInformation(v));
 		
+		// Check the average fuel efficiency of SUVs
+		double avgSUV = vehicleManager.getAverageFuelEfficiencyOfSUVs(1.0, 2.99);
+		System.out.println("The average SUV fuel efficiency is: " + avgSUV);
+		
 		// Save list to check file write ability
 		vehicleManager.saveVehicleList();
 	}

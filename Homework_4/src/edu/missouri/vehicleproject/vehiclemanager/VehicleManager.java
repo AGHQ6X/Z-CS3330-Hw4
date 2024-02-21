@@ -452,8 +452,30 @@ public class VehicleManager
 	
 	public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice)
 	{
-		// TODO
+		// Variables needed to calculate an average
+		double efficiencySum = 0.0;
+		int count = 0;
 		
-		return 0.0;
+		// Loop through vehicle list
+		for (Vehicle vehicle : this.vehicles)
+		{
+			// Check if vehicle is an SUV
+			if (this.isVehicleType(vehicle, SUV.class))
+			{
+				// If vehicle is an SUV, add to the sum and count
+				efficiencySum += vehicle.calculateFuelEfficiency(distance, fuelPrice);
+				count++;
+			}
+		}
+		
+		// Check if any SUVs were found
+		if (count == 0)
+		{
+			// If no SUVs were found, return error code
+			return -1.0;
+		}
+		
+		// If there were SUVs in the list, calculate the average
+		return efficiencySum / count;
 	}
 }
