@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import edu.missouri.vehicleproject.vehicle.Car;
 import edu.missouri.vehicleproject.vehicle.FuelType;
@@ -293,30 +294,160 @@ public class VehicleManager
 	
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance)
 	{
-		// TODO
+		// Check for empty vehicle list
+		if (this.vehicles.isEmpty())
+		{
+			// If vehicles is empty, return null
+			return null;
+		}
 		
-		return null;
+		// Create an array to store the best vehicles and a double to store efficiency
+		ArrayList<Vehicle> array = new ArrayList<Vehicle>();
+		double best = Double.MIN_VALUE;
+
+		// Loop through vehicles
+		for (Vehicle vehicle : this.vehicles)
+		{
+			// Calculate the efficiency of vehicle
+			double vMaint = vehicle.calculateMaintenaceCost(distance);
+
+			// Check if the efficiency is better or equal
+			if (vMaint > best)
+			{
+				// If the efficiency is better, replace elements with vehicle
+				array.clear();
+				array.add(vehicle);
+
+				// Set the best variable to new target
+				best = vMaint;
+			}
+			else if (vMaint == best)
+			{
+				// If the efficiency is a tie, just add it to the list
+				array.add(vehicle);
+			}
+		}
+
+		// Create a Random object
+		Random rand = new Random();
+		
+		//Get random int within array index range
+		int index = rand.nextInt(array.size());
+		
+		//Return the element at the random index
+		return array.get(index);
 	}
 	
 	public Vehicle getVehicleWithLowestMaintenanceCost(double distance)
 	{
-		// TODO
-		
-		return null;
+		// Check for empty vehicle list
+		if (this.vehicles.isEmpty())
+		{
+			// If vehicles is empty, return null
+			return null;
+		}
+
+		// Create an array to store the best vehicles and a double to store efficiency
+		ArrayList<Vehicle> array = new ArrayList<Vehicle>();
+		double best = Double.MAX_VALUE;
+
+		// Loop through vehicles
+		for (Vehicle vehicle : this.vehicles)
+		{
+			// Calculate the efficiency of vehicle
+			double vMaint = vehicle.calculateMaintenaceCost(distance);
+
+			// Check if the efficiency is better or equal
+			if (vMaint < best)
+			{
+				// If the efficiency is better, replace elements with vehicle
+				array.clear();
+				array.add(vehicle);
+
+				// Set the best variable to new target
+				best = vMaint;
+			}
+			else if (vMaint == best)
+			{
+				// If the efficiency is a tie, just add it to the list
+				array.add(vehicle);
+			}
+		}
+
+		// Create a Random object
+		Random rand = new Random();
+
+		//Get random int within array index range
+		int index = rand.nextInt(array.size());
+
+		//Return the element at the random index
+		return array.get(index);
 	}
 	
 	public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice)
 	{
-		// TODO
-		
-		return null;
+		// Create an array to store the best vehicles and a double to store efficiency
+		ArrayList<Vehicle> array = new ArrayList<Vehicle>();
+		double best = Double.MIN_VALUE;
+
+		// Loop through vehicles
+		for (Vehicle vehicle : this.vehicles)
+		{
+			// Calculate the efficiency of vehicle
+			double vEff = vehicle.calculateFuelEfficiency(distance, fuelPrice);
+
+			// Check if the efficiency is better or equal
+			if (vEff > best)
+			{
+				// If the efficiency is better, replace elements with vehicle
+				array.clear();
+				array.add(vehicle);
+
+				// Set the best variable to new target
+				best = vEff;
+			}
+			else if (vEff == best)
+			{
+				// If the efficiency is a tie, just add it to the list
+				array.add(vehicle);
+			}
+		}
+
+		// Return the lowest
+		return array;
 	}
 	
 	public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice)
 	{
-		// TODO
+		// Create an array to store the best vehicles and a double to store efficiency
+		ArrayList<Vehicle> array = new ArrayList<Vehicle>();
+		double best = Double.MAX_VALUE;
 		
-		return null;
+		// Loop through vehicles
+		for (Vehicle vehicle : this.vehicles)
+		{
+			// Calculate the efficiency of vehicle
+			double vEff = vehicle.calculateFuelEfficiency(distance, fuelPrice);
+			
+			// Check if the efficiency is better or equal
+			if (vEff < best)
+			{
+				// If the efficiency is better, replace elements with vehicle
+				array.clear();
+				array.add(vehicle);
+				
+				// Set the best variable to new target
+				best = vEff;
+			}
+			else if (vEff == best)
+			{
+				// If the efficiency is a tie, just add it to the list
+				array.add(vehicle);
+			}
+		}
+		
+		// Return the lowest
+		return array;
 	}
 	
 	public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice)

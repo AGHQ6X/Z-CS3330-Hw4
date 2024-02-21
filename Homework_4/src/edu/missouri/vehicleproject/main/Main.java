@@ -1,9 +1,12 @@
 package edu.missouri.vehicleproject.main;
 
+import java.util.ArrayList;
+
 import edu.missouri.vehicleproject.vehicle.Car;
 import edu.missouri.vehicleproject.vehicle.MotorBike;
 import edu.missouri.vehicleproject.vehicle.SUV;
 import edu.missouri.vehicleproject.vehicle.Truck;
+import edu.missouri.vehicleproject.vehicle.Vehicle;
 import edu.missouri.vehicleproject.vehiclemanager.VehicleManager;
 
 public class Main
@@ -42,6 +45,26 @@ public class Main
 		
 		// Display Truck count
 		System.out.println("There are " + vehicleManager.getNumberOfVehichlesByType(Truck.class) + " Trucks.");
+		
+		// Check for highest fuel efficiency
+		Vehicle highV = vehicleManager.getVehicleWithHighestMaintenanceCost(1.0);
+		System.out.println("Vehicle with highest maintenance cost: ");
+		vehicleManager.displayVehicleInformation(highV);
+		
+		// Check for highest fuel efficiency
+		Vehicle lowV = vehicleManager.getVehicleWithLowestMaintenanceCost(1.0);
+		System.out.println("Vehicle with lowest maintenance cost: ");
+		vehicleManager.displayVehicleInformation(lowV);
+		
+		// Check for highest fuel efficiency
+		ArrayList<Vehicle> highArr = vehicleManager.getVehicleWithHighestFuelEfficiency(1.0, 2.99);
+		System.out.println("Vehicles with highest fuel efficiency:");
+		highArr.forEach(v -> vehicleManager.displayVehicleInformation(v));
+		
+		// Check for lowest fuel efficiency
+		ArrayList<Vehicle> lowArr = vehicleManager.getVehicleWithLowestFuelEfficiency(1.0, 2.99);
+		System.out.println("Vehicles with lowest fuel efficiency:");
+		lowArr.forEach(v -> vehicleManager.displayVehicleInformation(v));
 		
 		// Save list to check file write ability
 		vehicleManager.saveVehicleList();
