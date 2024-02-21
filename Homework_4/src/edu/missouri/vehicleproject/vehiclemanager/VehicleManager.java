@@ -273,9 +273,22 @@ public class VehicleManager
 	
 	public int getNumberOfVehichlesByType(@SuppressWarnings("rawtypes") Class clazz)
 	{
-		// TODO
+		// Counter variable
+		int count = 0;
 		
-		return 0;
+		// Loop through vehicles
+		for (Vehicle vehicle : this.vehicles)
+		{
+			// Check if the vehicle is of type clazz
+			if (this.isVehicleType(vehicle, clazz))
+			{
+				// If the vehicle is of type clazz, increment counter
+				count++;
+			}
+		}
+		
+		// Return the count
+		return count;
 	}
 	
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance)
