@@ -11,10 +11,10 @@ public class Main
 		VehicleManager vehicleManager = new VehicleManager();
 		
 		// Read vehicle data from the vehcileList.csv file and initialize objects.
-		// TODO
+		vehicleManager.readFromFile("vehicleListCopy.csv");
 		
 		// Display all vehicle information.
-		// TODO
+		vehicleManager.displayAllVehicleInformation();
 		
 		// Display all car information.
 		// TODO
