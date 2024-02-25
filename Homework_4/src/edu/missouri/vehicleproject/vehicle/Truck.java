@@ -15,22 +15,22 @@ public class Truck extends Vehicle
 	@Override
 	public double calculateMaintenaceCost(double distance)
 	{
-		// TODO 
-		
-		return 0;
+		long currentYear = java.time.Year.now().getValue();	
+		return distance * this.mass * (currentYear - this.modelYear) * this.cylinders * 0.002;
 	}
 
 	@Override
 	public double calculateFuelEfficiency(double distance, double fuelPrice)
 	{
-		// TODO 
-		
-		return 0.0;
+		if (distance == 0) {
+			return 0;		
+		}
+		return (this.cylinders * this.gasTankCapacity * this.fuelPrice) / (distance * 0.1);
 	}
 
 	@Override
 	public void startEngine()
 	{
-		// TODO
+		System.out.printIn("Engine starts with KEYSTART.")
 	}
 }
