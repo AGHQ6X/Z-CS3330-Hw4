@@ -97,19 +97,23 @@ public class VehicleManager
 		}
 	}
 	
+	//Convert vehicle object to CSV stirng
+	private String vehicleToCSVString(Vehicle vehicle) {
+		return String.join(",", vehicle.getClass().getSimpleName(), vehicle.getBrand(), vehicle.getMake(),
+				String.valueOf(vehicle.getModelYear()), String.valueOf(vehicle.getPrice()), vehicle.getColor().toString(),
+				String.valueOf(vehicle.getMilage()), String.valueOf(vehicle.getMass()), String.valueOf(vehicle.getCylinders()),
+				String.valueOf(vehicle.getGasTankCapacity()), vehicle.getFuelType().toString(), vehicle.getStartType().toString());
+	}
+	
 	// List editor methods
 	public boolean addVehicle(Vehicle vehicle)
 	{
-		// TODO
-		
-		return true;
+		return vehicles.add(vehicle);
 	}
 	
 	public boolean removeVehicle(Vehicle vehicle)
 	{
-		// TODO
-		
-		return true;
+		return vehicles.remove(vehicle);
 	}
 	
 	// Display information methods
