@@ -119,43 +119,70 @@ public class VehicleManager
 	// Display information methods
 	public void displayVehicleInformation(Vehicle v)
 	{
-		// TODO
+		if (vehicles.contains(v)) {
+			System.out.println(v);
+		} else {
+			System.out.println("Vehicle not found.");
+		}
 	}
 	
 	public void displayAllCarInformation()
 	{
-		// TODO
+		System.out.println("Cars information: ");
+		for (Vehicle vehicle : vehicles) {
+			if (vehicle instanceof Car) {
+				System.out.println(vehicle);
+			}
+		}
 	}
 	
 	public void displayAllTruckInformation()
 	{
-		// TODO
+		System.out.println("Trucks information: ");
+		for (Vehicle vehicle : vehicles) {
+			if (vehicle instanceof Truck) {
+				System.out.println(vehicle);
+			}
+		}
 	}
-	
 	public void displayAllSUVInformation()
 	{
-		// TODO
+		System.out.println("SUVs information: ");
+		for (Vehicle vehicle : vehicles) {
+			if (vehicle instanceof SUV) {
+				System.out.println(vehicle);
+			}
+		}
 	}
 	
 	public void displayAllMotorBikeInformation()
 	{
-		// TODO
+		System.out.println("MotorBikes information: ");
+		for (Vehicle vehicle : vehicles) {
+			if (vehicle instanceof MotorBike) {
+				System.out.println(vehicle);
+			}
+		}
 	}
 	
 	public void displayAllVehicleInformation()
 	{
-		// TODO
+		System.out.println("All vehicles information: ");
+		for (Vehicle vehicle : vehicles) {
+			System.out.println(vehicle);
+		}
 	}
 	
 	// Check vehicle methods
 	@SuppressWarnings("unused")
 	private boolean isVehicleType(Vehicle v, @SuppressWarnings("rawtypes") Class clazz)
 	{
-		// TODO
-		
-		return true;
-	}
-	
+		int count = 0;
+        for (Vehicle vehicle : vehicles) {
+            if (clazz.isInstance(vehicle)) {
+                count++;
+        }
+    }
 	public int getNumberOfVehichlesByType(@SuppressWarnings("rawtypes") Class clazz)
 	{
 		// TODO
@@ -165,8 +192,7 @@ public class VehicleManager
 	
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance)
 	{
-		// TODO
-		
+		if (vehicles.isEmpty()) {	
 		return null;
 	}
 	
