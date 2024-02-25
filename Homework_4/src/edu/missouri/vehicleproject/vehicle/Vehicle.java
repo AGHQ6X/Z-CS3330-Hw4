@@ -57,9 +57,20 @@ public abstract class Vehicle
 	@Override
 	public String toString()
 	{
-		// TODO
+		return "Vehicle{" +
+		"brand='" + brand + '\'' +
+	    ", make='" + make + '\'' +
+	    ", modelYear=" + modelYear +
+	    ", price=" + price +
+	    ", color=" + color +
+	    ", mileage=" + mileage +
+	    ", mass=" + mass +
+	    ", cylinders=" + cylinders +
+	    ", gasTankCapacity=" + gasTankCapacity +
+	    ", fuelType=" + fuelType +
+	    ", startType=" + startType +
+	    '}';
 		
-		return "";
 	}
 
 	//Getters and setters 
