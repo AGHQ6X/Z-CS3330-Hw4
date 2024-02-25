@@ -31,6 +31,6 @@ public class Truck extends Vehicle
 	@Override
 	public void startEngine()
 	{
-		System.out.printIn("Engine starts with KEYSTART.")
+		System.out.println("Engine starts with KEYSTART.")
 	}
 }
