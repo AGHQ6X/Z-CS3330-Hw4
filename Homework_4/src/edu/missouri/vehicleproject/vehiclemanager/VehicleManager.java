@@ -26,8 +26,7 @@ public class VehicleManager
 	{
 		// Initialize variables
 		this.fileName = fileName;
-		this.vehicles = new ArrayList<Vehicle>();
-		
+		this.vehicles = new ArrayList<Vehicle>();n
 		// Read from file
 		readFromFile(this.fileName);
 	}
@@ -35,9 +34,53 @@ public class VehicleManager
 	// File IO methods
 	public boolean readFromFile(String fileName)
 	{
-		// TODO
-		
-		return true;
+		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+			String line;
+			while((line = br.readLine()) != null) {
+				String[] parts = line.split(",");
+				if (parts.length != 12) {
+					System.out.println("Invalid data format in CSV file: " + line);
+					continue;
+				}
+				
+				//Extract vehicle information
+				String type = parts[0];
+				String brand = parts[1];
+				String make = parts[2];
+				long modelYear = Long.parseLong(parts[3]);
+				double price = Double.parseDouble(parts[4]);
+				VehicleColor color = VehicleColor.valueOf(parts[5]);
+				FuelType fuelType = FuelType.valueOf(parts[6]);
+				double milage = Double.parseDouble(parts[7]);
+				double mass = Double.parseDouble(parts[8]);
+				int cylinders = Integer.parseInteger(parts[9]);
+				double gasTankCapacity = Double.parseDouble(parts[10]);
+				StartMechanism startType = StartMechanism.valueOf(parts[11]);
+				
+				//Create vehicle object
+				switch(type) {
+				case "Car":
+					vehicles.add(new Car(brand, make, modelYear, price, color, milage, mass, cylinders, gasTankCapacity, fuelType, startType));
+					break;
+				case "Truck":
+					vehicles.add(new Car(brand, make, modelYear, price, color, milage, mass, cylinders, gasTankCapacity, fuelType, startType));
+					break;
+				case "SUV":
+					vehicles.add(new Car(brand, make, modelYear, price, color, milage, mass, cylinders, gasTankCapacity, fuelType, startType));
+					break;
+				case "MotorBike":
+					vehicles.add(new Car(brand, make, modelYear, price, color, milage, mass, cylinders, gasTankCapacity, fuelType, startType));
+					break;
+				default:
+					System.out.println("Unknown vehicle type: " + type);
+					break;
+				}
+			}
+			return true;
+		} catch (IOException e) {
+			System.out.println("Error reading file: " + e.getMessage());
+			return false;
+		}
 	}
 	
 	public boolean saveVehicleList()
