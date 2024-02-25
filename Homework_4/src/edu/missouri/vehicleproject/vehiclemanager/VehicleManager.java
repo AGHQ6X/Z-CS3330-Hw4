@@ -85,9 +85,16 @@ public class VehicleManager
 	
 	public boolean saveVehicleList()
 	{
-		// TODO
-		
-		return true;
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+			for (Vehicle vehicle : vehicles) {
+				bw.write(vehicleToCSVString(vehicle));
+				bw.newLine();
+			}
+			return true;
+		} catch (IOException e) {
+			System.out.println("Error writing to file: " + e.getMessage());
+			return false;
+		}
 	}
 	
 	// List editor methods
