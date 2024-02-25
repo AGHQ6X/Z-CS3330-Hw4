@@ -177,24 +177,23 @@ public class VehicleManager
 	@SuppressWarnings("unused")
 	private boolean isVehicleType(Vehicle v, @SuppressWarnings("rawtypes") Class clazz)
 	{
+		return clazz.isInstance(v);
+    }
+	public int getNumberOfVehichlesByType(@SuppressWarnings("rawtypes") Class clazz)
+	{
 		int count = 0;
         for (Vehicle vehicle : vehicles) {
             if (clazz.isInstance(vehicle)) {
                 count++;
         }
     }
-	public int getNumberOfVehichlesByType(@SuppressWarnings("rawtypes") Class clazz)
-	{
-		// TODO
-		
-		return 0;
-	}
-	
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance)
 	{
 		if (vehicles.isEmpty()) {	
 		return null;
 	}
+		
+	Vehicle highestMaintenanceVehicle = vehicles.get(0);
 	
 	public Vehicle getVehicleWithLowestMaintenanceCost(double distance)
 	{

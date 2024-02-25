@@ -13,7 +13,7 @@ public class Truck extends Vehicle
 
 	// Vehicle abstract methods
 	@Override
-	public double calculateMaintenaceCost(double distance)
+	public double calculateMaintenanceCost(double distance)
 	{
 		long currentYear = java.time.Year.now().getValue();	
 		return distance * this.mass * (currentYear - this.modelYear) * this.cylinders * 0.002;
