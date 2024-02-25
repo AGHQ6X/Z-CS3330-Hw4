@@ -11,15 +11,18 @@ public class Main
 		VehicleManager vehicleManager = new VehicleManager();
 		
 		// Read vehicle data from the vehcileList.csv file and initialize objects.
-		// TODO
 		
 		// Display all vehicle information.
-		// TODO
+        System.out.println("Displaying all vehicle information: ");
+        vehicleManager.displayAllVehicleInformation();
+		
 		
 		// Display all car information.
-		// TODO
+        System.out.println("Displaying all car information:");
+        vehicleManager.displayAllCarInformation();
 		
 		// Display all motorbike information.
-		// TODO
+        System.out.println("Displaying all motorbike information:");
+        vehicleManager.displayAllMotorBikeInformation();
 	}
 }
