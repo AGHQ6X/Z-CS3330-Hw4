@@ -194,6 +194,7 @@ public class VehicleManager
 	}
 		
 	Vehicle highestMaintenanceVehicle = vehicles.get(0);
+	double highestMaintenanceCost = highestMaintenanceVehicle.calculateMaintenaceCost(distance);
 	
 	public Vehicle getVehicleWithLowestMaintenanceCost(double distance)
 	{
